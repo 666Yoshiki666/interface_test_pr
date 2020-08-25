@@ -60,6 +60,11 @@ def set_xml():
                 sql = {}
                 for data in tb.getchildren():
                     sql_id = data.get(key='name')
+                    '''
+                    .text返回的是Unicode型的数据(文本) 
+                    .content返回的是bytes型的数据(图片，文件)
+                    '''
+                    #返回文本内容
                     sql[sql_id] = data.text
                 table[table_name] = sql
             database[db_name] = table
