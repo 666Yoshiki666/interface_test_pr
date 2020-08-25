@@ -1,6 +1,9 @@
 import os
-from xlrd import open_workbook#用于操作excel
-from xml.etree import ElementTree
+from xlrd import open_workbook #用于操作excel
+try:
+    from xml.etree import ElementTree #用于操作xml
+except ImportError:
+    from xml.etree import cElementTree #速度更快
 from common.Log import MyLog as Log
 from common import configHttp
 import readConfig
@@ -39,19 +42,24 @@ def get_xls(xls_name, sheet_name):
             cls.append(sheet.row_values(i))
     return cls
 
+#xml文件中读取sql语句
 database = {}
 def set_xml():
     if len(database) == 0:
         sql_path = os.path.join(readConfig.proDir, 'testFile', 'SQL.xml')
-        tree = ElementTree.parse(sql_path)
+        #解析xml文件
+        tree = ElementTree.parse(source=sql_path)
+        #根据标签名称或路径查找所有匹配的子元素
         for db in tree.findall('database'):
-            db_name = db.get('name')
+            #得到元素属性
+            db_name = db.get(key='name')
             table = {}
+            #返回所有子元素，按文档顺序返回
             for tb in db.getchildren():
-                table_name = tb.get('name')
+                table_name = tb.get(key='name')
                 sql = {}
                 for data in tb.getchildren():
-                    sql_id = data.get('name')
+                    sql_id = data.get(key='name')
                     sql[sql_id] = data.text
                 table[table_name] = sql
             database[db_name] = table
