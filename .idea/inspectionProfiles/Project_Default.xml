@@ -1,0 +1,19 @@
+<component name="InspectionProjectProfileManager">
+  <profile version="1.0">
+    <option name="myName" value="Project Default" />
+    <inspection_tool class="PyUnresolvedReferencesInspection" enabled="true" level="WARNING" enabled_by_default="true">
+      <option name="ignoredIdentifiers">
+        <list>
+          <option value="conf_dev" />
+          <option value="conf_test" />
+          <option value="FileUtil" />
+          <option value="smart.MainUtil.datatime" />
+          <option value="MongoUtil" />
+          <option value="MainUtil" />
+          <option value="scratch_airport_name" />
+          <option value="scratch_flight_number" />
+        </list>
+      </option>
+    </inspection_tool>
+  </profile>
+</component>
