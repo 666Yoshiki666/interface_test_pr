@@ -1,3 +1,5 @@
+#用于访问接口
+
 import requests#使用Apache2 licensed 许可证的HTTP库
 import readConfig
 from common.Log import MyLog as Log

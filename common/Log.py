@@ -1,3 +1,5 @@
+#用于定义日志格式
+
 import logging
 import threading
 import os

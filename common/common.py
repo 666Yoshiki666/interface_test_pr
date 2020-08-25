@@ -1,3 +1,5 @@
+#用于读取文件信息
+
 import os
 from xlrd import open_workbook #用于操作excel
 try:
